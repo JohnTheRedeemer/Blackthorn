@@ -1,0 +1,49 @@
+Success
+curl --location --request POST 'https://blackthornevents-developer-edition.na162.force.com/rest/services/apexrest/register' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: BrowserId=fwGPbVtNEeun4kHwo2mvrQ' \
+--data-raw '{
+    "fName": "Remote",
+    "lName": "Tester",
+    "evtName": "Group Counting",
+    "evtId": "",
+    "key": "testKey"
+}'
+
+Failure, key does not match
+curl --location --request POST 'https://blackthornevents-developer-edition.na162.force.com/rest/services/apexrest/register' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: BrowserId=fwGPbVtNEeun4kHwo2mvrQ' \
+--data-raw '{
+    "fName": "Remote",
+    "lName": "Tester",
+    "evtName": "Group Counting",
+    "evtId": "",
+    "key": "hacking"
+}'
+
+Failure, not a free event
+
+curl --location --request POST 'https://blackthornevents-developer-edition.na162.force.com/rest/services/apexrest/register' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: BrowserId=fwGPbVtNEeun4kHwo2mvrQ' \
+--data-raw '{
+    "fName": "Remote",
+    "lName": "Tester",
+    "evtName": "John Carmack Talks",
+    "evtId": "",
+    "key": "testKey"
+}'
+
+Failure, event is in draft status
+
+curl --location --request POST 'https://blackthornevents-developer-edition.na162.force.com/rest/services/apexrest/register' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: BrowserId=fwGPbVtNEeun4kHwo2mvrQ' \
+--data-raw '{
+    "fName": "Remote",
+    "lName": "Test2",
+    "evtName": "Corporate Engagement",
+    "evtId": "",
+    "key": "hacking"
+}'
